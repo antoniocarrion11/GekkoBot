@@ -33,9 +33,11 @@ If i have other components i can use docker on my server to spin those up fast.
 
 *Need to design system, components, find what components are needed* 
 - [x] Create a github repo and design doc
-- [ ] I should build some example commands to get some bare bones before building it all up
+- [x] I should build some example commands to get some bare bones before building it all up
+- [x] Gotta add the bot to a discord server for testing the commands
+- [ ] I should find a way to have some automated tests for this thing if possible
 - [ ] I should mock up some diagrams to make sure I understand how these components interact with eachother
-- [ ] I know i need something like Spring Boot for my rest endpoints
+- [ ] I know i need something like Spring Boot for my rest endpoints to valorant api
 - [ ] I might need a Database to track info, percentages, etc.
 - [ ] a noSql database would be useful to reduce api calls, and calls to DB
 - [ ] I need a server to host the discord bot so it’s not reliant on my computer
