@@ -1,4 +1,4 @@
-package org.example;
+package org.bot.commands;
 
 import ca.tristan.easycommands.commands.EventData;
 import ca.tristan.easycommands.commands.slash.SlashExecutor;
@@ -12,7 +12,7 @@ public class ExampleSlashCmd extends SlashExecutor {
 
     @Override
     public String getDescription() {
-        return "introduces gekko bot";
+        return "introduces gekko org.bot";
     }
 
     @Override
