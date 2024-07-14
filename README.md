@@ -36,10 +36,9 @@ If i have other components i can use docker on my server to spin those up fast.
 - [x] I should build some example commands to get some bare bones before building it all up
 - [x] Gotta add the org.bot to a discord server for testing the commands
 - [x] add spring boot dependencies to the project
-- [ ] Write some test spring boot api calls to henrik's valorant api
+- [ ] Write some test REST calls to henrik's valorant api
 - [ ] I should find a way to have some automated tests for this thing if possible
 - [ ] I should mock up some diagrams to make sure I understand how these components interact with eachother
-- [ ] I know i need something like Spring Boot for my rest endpoints to valorant api
 - [ ] I might need a Database to track info, percentages, etc.
 - [ ] a noSql database would be useful to reduce api calls, and calls to DB
 - [ ] I need a server to host the discord org.bot so it’s not reliant on my computer
