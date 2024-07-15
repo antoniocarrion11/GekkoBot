@@ -42,3 +42,19 @@ If i have other components i can use docker on my server to spin those up fast.
 - [ ] I might need a Database to track info, percentages, etc.
 - [ ] a noSql database would be useful to reduce api calls, and calls to DB
 - [ ] I need a server to host the discord org.bot so it’s not reliant on my computer
+
+### Update 7/15/2024
+
+Hey Cutie check this.
+There are 2 pathways forward, Henriks api or Riot's api
+There are a lack of personal account info endpoints with Henrik's api
+this is because he is likely just a middleman between myself and riot, and probably is serving up his own auth token for
+riot
+but the info returned is clearly and cleanly formatted in json
+His server seems to go down a lot
+
+Alt is using RSO and using refresh tokens with Riot's api myself.
+that would mean i have to cache and handle processing of each token to each user
+but it would give me access to more personal account info, such as store info etc
+The other part of this is the data i get back would be not as clean as Henrik's endpoints which is a bummer
+Plan right now is to make two branches off master and try these out. Let's go.
