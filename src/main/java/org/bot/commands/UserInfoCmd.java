@@ -5,6 +5,8 @@ import ca.tristan.easycommands.commands.slash.SlashExecutor;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.bot.riot.api.ValorantController;
+import org.bot.riot.model.AbstractResponse;
+import org.bot.riot.model.error.ErrorResponse;
 import org.bot.riot.model.player.PlayerResponse;
 
 import java.util.List;
@@ -41,13 +43,18 @@ public class UserInfoCmd extends SlashExecutor {
         String tag = data.getCommand().getOptions().get(1).getAsString();
 
         ValorantController controller = new ValorantController();
-        PlayerResponse playerResponse = controller.getUser(name, tag);
+        AbstractResponse response = controller.getUser(name, tag);
 
-        data.reply("Ay dawg! Here's the guy you were looking for:", false).queue();
-        data.reply("Userid: " + playerResponse.getResponseData().getPuuid(), false).queue();
-        data.reply("Name: " + playerResponse.getResponseData().getName(), false).queue();
-        data.reply("Tag: " + playerResponse.getResponseData().getTag(), false).queue();
-        data.reply("Level: " + playerResponse.getResponseData().getAccountLevel(), false).queue();
-
+        // TODO: Instead of checking the errors array check the status
+        if (!response.getAllErrors().isEmpty()) {
+            ErrorResponse errorResponse = (ErrorResponse) response;
+        } else {
+            PlayerResponse playerResponse = (PlayerResponse) response;
+            data.reply("Ay dawg! Here's the guy you were looking for:", false).queue();
+            data.reply("Userid: " + playerResponse.getResponseData().getPuuid(), false).queue();
+            data.reply("Name: " + playerResponse.getResponseData().getName(), false).queue();
+            data.reply("Tag: " + playerResponse.getResponseData().getTag(), false).queue();
+            data.reply("Level: " + playerResponse.getResponseData().getAccountLevel(), false).queue();
+        }
     }
 }

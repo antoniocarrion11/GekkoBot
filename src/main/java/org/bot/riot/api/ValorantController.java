@@ -1,5 +1,6 @@
 package org.bot.riot.api;
 
+import org.bot.riot.model.AbstractResponse;
 import org.bot.riot.model.player.PlayerResponse;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
@@ -20,16 +21,11 @@ public class ValorantController {
     }
 
     //Need to call this with a slash command next to get data using the discord bot
-    public PlayerResponse getUser(String name, String tag) {
+    public AbstractResponse getUser(String name, String tag) {
 
         // getForObject automatically serializes the response into a java object for us
         // spring boot has more or less become a glorified jackson serializer + a wrapper for url fetches
-        PlayerResponse restTemplateUser = restTemplate.getForObject("/account/{name}/{tag}?api_key={api_key}", PlayerResponse.class, name, tag, apiKey);
-
-        System.out.println("restTemplateUser: " + restTemplateUser);
-        System.out.println("Userid: " + restTemplateUser.getResponseData().getPuuid());
-        System.out.println("Name: " + restTemplateUser.getResponseData().getName());
-        System.out.println("Tag: " + restTemplateUser.getResponseData().getTag());
+        AbstractResponse restTemplateUser = restTemplate.getForObject("/account/{name}/{tag}?api_key={api_key}", PlayerResponse.class, name, tag, apiKey);
 
         return restTemplateUser;
     }

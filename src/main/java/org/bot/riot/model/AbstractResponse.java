@@ -4,11 +4,11 @@ import org.bot.riot.model.error.ErrorResponseData;
 
 import java.util.List;
 
-public abstract class AbstractResponseClass {
+public abstract class AbstractResponse {
     protected Integer status;
     protected List<ErrorResponseData> errors;
 
-    public AbstractResponseClass(int status, List<ErrorResponseData> errors) {
+    public AbstractResponse(int status, List<ErrorResponseData> errors) {
         this.status = status;
         this.errors = errors;
     }

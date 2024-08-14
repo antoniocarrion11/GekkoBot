@@ -1,11 +1,11 @@
 package org.bot.riot.model.error;
 
-import org.bot.riot.model.AbstractResponseClass;
+import org.bot.riot.model.AbstractResponse;
 import org.bot.riot.model.ResponseData;
 
 import java.util.List;
 
-public class ErrorResponse extends AbstractResponseClass {
+public class ErrorResponse extends AbstractResponse {
 
     public ErrorResponse(int status, List<ErrorResponseData> errors) {
         super(status, errors);

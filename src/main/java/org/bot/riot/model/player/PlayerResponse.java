@@ -1,10 +1,10 @@
 package org.bot.riot.model.player;
 
-import org.bot.riot.model.AbstractResponseClass;
+import org.bot.riot.model.AbstractResponse;
 
 import java.util.Collections;
 
-public class PlayerResponse extends AbstractResponseClass {
+public class PlayerResponse extends AbstractResponse {
 
     private PlayerData data;
 
