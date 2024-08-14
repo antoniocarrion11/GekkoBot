@@ -4,6 +4,8 @@ import ca.tristan.easycommands.EasyCommands;
 import ca.tristan.easycommands.commands.defaults.HelpCmd;
 import net.dv8tion.jda.api.JDA;
 import org.bot.commands.ExampleSlashCmd;
+import org.bot.commands.LastMatchCmd;
+import org.bot.commands.UserInfoCmd;
 import org.bot.riot.api.ValorantController;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -21,7 +23,9 @@ public class GekkoBotApp {
                 .registerListeners()
                 .addExecutor(
                         new HelpCmd(easyCommands),
-                        new ExampleSlashCmd())
+                        new ExampleSlashCmd(),
+                        new UserInfoCmd(),
+                        new LastMatchCmd())
                 .addEnabledCacheFlags()
                 .addGatewayIntents()
                 .buildJDA();

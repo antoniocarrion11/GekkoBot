@@ -3,16 +3,17 @@ package org.bot.commands;
 import ca.tristan.easycommands.commands.EventData;
 import ca.tristan.easycommands.commands.slash.SlashExecutor;
 
-public class ExampleSlashCmd extends SlashExecutor {
+public class LastMatchCmd extends SlashExecutor {
+
 
     @Override
     public String getName() {
-        return "intro";
+        return "lastmatch";
     }
 
     @Override
     public String getDescription() {
-        return "introduces gekko bot";
+        return "finds the stats of the last match played";
     }
 
     @Override

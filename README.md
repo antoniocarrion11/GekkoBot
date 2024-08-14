@@ -58,3 +58,31 @@ that would mean i have to cache and handle processing of each token to each user
 but it would give me access to more personal account info, such as store info etc
 The other part of this is the data i get back would be not as clean as Henrik's endpoints which is a bummer
 Plan right now is to make two branches off master and try these out. Let's go.
+
+### Update 8/11/2024
+
+Ran into a problem with response data.
+We ended up having many pojos to deserialize and were trying to minimize the amount by using polymorphism/inheritance.
+So, in a response object we can either get the data that we expect or an error list.
+The attempt to make a generic response object did not work.
+Jacob suggests creating an abstract class. The class would consist of the status and error list.
+Then, implementers would need to override the getData function to whatever data it expects.
+
+Seemingly, if i have a property that i do not need to serialize I do not need to create that class or property for the
+whole serialization to work.
+SpringBoot seems a little unnecessary, but for now it's working as a deserializer and something to make api requests
+with.
+The SECOND this thing stops being useful or causes a problem, we're using Jackson to de/serialize and something else to
+make api calls.
+Consider importing libraries that make building classes easier with annotations instead of making a million getters and
+setters.
+Side note tangent: Using docker to make containers to add environment variables or specific configurations of mySQL java
+etc
+is a good idea. This is also a solution to scaling, if anything else ever needs to be added.
+
+https://projectlombok.org/features/GetterSetter
+https://projectlombok.org/features/constructor
+https://hub.docker.com/_/openjdk/
+https://medium.com/@tiokachiu/java-based-apis-with-openapi-specifications-a-comprehensive-guide-b7ef8b649776
+https://www.baeldung.com/jackson-object-mapper-tutorial
+https://www.baeldung.com/java-dto-pattern
