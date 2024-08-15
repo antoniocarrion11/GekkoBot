@@ -1,5 +1,6 @@
 package org.bot.riot.model.player;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.bot.riot.model.ResponseData;
@@ -10,6 +11,7 @@ import org.bot.riot.model.match.ValorantAsset;
 
 @Getter
 @Setter
+@Builder
 public class PlayerData implements ResponseData {
   private String puuid;
   private String name;

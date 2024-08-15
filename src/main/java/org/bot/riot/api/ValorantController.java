@@ -9,10 +9,10 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 public class ValorantController {
 
     // Spring boot's way to fetch data from a url
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     // Need to implement safer way to hide api key
-    private String apiKey = System.getenv("HENRIK_DEV_KEY");
+    private final String apiKey = System.getenv("HENRIK_DEV_KEY");
 
     public ValorantController() {
         restTemplate = new RestTemplateBuilder()
@@ -25,9 +25,8 @@ public class ValorantController {
 
         // getForObject automatically serializes the response into a java object for us
         // spring boot has more or less become a glorified jackson serializer + a wrapper for url fetches
-        AbstractResponse restTemplateUser = restTemplate.getForObject("/account/{name}/{tag}?api_key={api_key}", PlayerResponse.class, name, tag, apiKey);
 
-        return restTemplateUser;
+        return restTemplate.getForObject("/account/{name}/{tag}?api_key={api_key}", PlayerResponse.class, name, tag, apiKey);
     }
 
     //Need to call this with a slash command next to get data using the discord bot
