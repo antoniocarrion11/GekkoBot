@@ -86,3 +86,13 @@ https://hub.docker.com/_/openjdk/
 https://medium.com/@tiokachiu/java-based-apis-with-openapi-specifications-a-comprehensive-guide-b7ef8b649776
 https://www.baeldung.com/jackson-object-mapper-tutorial
 https://www.baeldung.com/java-dto-pattern
+
+### Update 8/14/2024
+
+I built out the rest of the objects needed for the match data request.
+Shout Out Jacob AKA Jacoby & Meyers AKA & ThirstyJGerzty for the lombok plugin.
+Significantly cut down the horrible boiler plate getters and setters.
+Unfortunately i've been thinking about doing a builder patter for these objects.
+Though I don't know if that makes any sense at all, and for some reason i'm just blaming spring boot for what a mess
+this looks like.
+Goddamn springboot.
