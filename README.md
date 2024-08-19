@@ -1,7 +1,7 @@
 # Discord Gekko Bot
 
 *~Working Design Doc for Gekko Bot*
-*Requirements, implementation ideas, problems to solve etc...*
+*Requirements, implementation ideas, problems to solve, dev diary etc...*
 
 ### Quick summary
 Building a org.bot flavored as Gekko; The org.bot can get information from Val servers about players, stats etc.
@@ -31,18 +31,51 @@ If i have other components i can use docker on my server to spin those up fast.
 2. Easy Commands library, supposed to make commands for discord org.bot easier to use. 
 3. Henrik dev api, supposed to be used to get info from val servers. *Written in js or something, might have to write some javascrip not sure*. 
 
-*Need to design system, components, find what components are needed* 
-- [x] Create a github repo and design doc
-- [x] I should build some example commands to get some bare bones before building it all up
-- [x] Gotta add the org.bot to a discord server for testing the commands
-- [x] add spring boot dependencies to the project
-- [x] Write some test REST calls to henrik's valorant api
-- [ ] I should find a way to have some automated tests for this thing if possible
-- [ ] I should mock up some diagrams to make sure I understand how these components interact with eachother
-- [ ] I might need a Database to track info, percentages, etc.
-- [ ] a noSql database would be useful to reduce api calls, and calls to DB
-- [ ] I need a server to host the discord org.bot so it’s not reliant on my computer
+*Need to design system, components, find what components are needed*
 
+## CURRENT TRELLO BOARD
+
+### To Do
+
+- [ ] Create exception handling for GET requests
+- [ ] Test player data serialization
+- [ ] Test match data serialization
+- [ ] Create Slash Command for Player Data
+- [ ] Create Slash Command for Match Data
+- [ ] Write Service logic that uses match data
+- [ ] Write Service logic that uses player data
+- [ ] mock up diagrams
+- [ ] Setup MySQL Database
+- [ ] Get RSO token for Riot's api
+- [ ] Write test REST calls to Riot's api
+- [ ] Create a server to host the discord bot
+- [ ] Get docker running
+- [ ] Put the service components within their own docker containers
+- [ ] Setup a noSql database
+- [ ] Use NoSql to reduce api calls, and queries to DB
+- [ ] see if automated tests are viable
+
+### In Progress
+
+- [ ] Create GET request for match data
+
+### Done
+
+- [x] Create GET request for player data
+- [x] Create a design doc
+- [x] Add bot to a discord server for testing
+- [x] Create a github
+- [x] Write test REST calls to henrik's valorant api
+- [x] Build some example commands
+- [x] add spring boot dependencies to the project
+- [x] Create Dev Diary
+- [x] Create a Trello Board
+
+### Get Help
+
+- [ ] nothing yet
+
+## Dev Diary
 ### Update 7/15/2024
 
 Hey Cutie check this.
@@ -80,12 +113,12 @@ Side note tangent: Using docker to make containers to add environment variables 
 etc
 is a good idea. This is also a solution to scaling, if anything else ever needs to be added.
 
-https://projectlombok.org/features/GetterSetter
-https://projectlombok.org/features/constructor
-https://hub.docker.com/_/openjdk/
-https://medium.com/@tiokachiu/java-based-apis-with-openapi-specifications-a-comprehensive-guide-b7ef8b649776
-https://www.baeldung.com/jackson-object-mapper-tutorial
-https://www.baeldung.com/java-dto-pattern
+<br>https://projectlombok.org/features/GetterSetter
+<br>https://projectlombok.org/features/constructor
+<br>https://hub.docker.com/_/openjdk/
+<br>https://medium.com/@tiokachiu/java-based-apis-with-openapi-specifications-a-comprehensive-guide-b7ef8b649776
+<br>https://www.baeldung.com/jackson-object-mapper-tutorial
+<br>https://www.baeldung.com/java-dto-pattern
 
 ### Update 8/14/2024
 
@@ -93,7 +126,7 @@ I built out the rest of the objects needed for the match data request.
 
 Shout Out Jacob AKA Jacoby & Meyers AKA ThirstyJGerzty for the lombok plugin.
 It significantly cut down the horrible boiler plate getters and setters.
-Unfortunately i've been thinking about doing a builder patter for these objects.
+Unfortunately i've been thinking about doing a builder pattern for these objects.
 Though I don't know if that makes any sense at all, and for some reason i'm just blaming spring boot for what a mess
 this looks like.
 Goddamn springboot.
@@ -104,3 +137,8 @@ No. Fucking. Way. Bro.
 Lombok has a fuckin builder annotation. I still don't know if i need this thing but it's fucking awesome to have one on
 hand.
 This is sick.
+
+### Update 8/19
+
+Created a trello board and an easy way to convert it to markdown, hell yeah
+Hoping this helps with not getting overwhelmed
