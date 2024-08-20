@@ -36,11 +36,8 @@ If i have other components i can use docker on my server to spin those up fast.
 
 ## CURRENT TRELLO BOARD
 
-### To Do
+## To Do
 
-- [ ] Create exception handling for GET requests
-- [ ] Test player data serialization
-- [ ] Test match data serialization
 - [ ] Create Slash Command for Player Data
 - [ ] Create Slash Command for Match Data
 - [ ] Write Service logic that uses match data
@@ -56,12 +53,15 @@ If i have other components i can use docker on my server to spin those up fast.
 - [ ] Use NoSql to reduce api calls, and queries to DB
 - [ ] see if automated tests are viable
 
-### In Progress
+## In Progress
 
-- [ ] Create GET request for match data
+- [ ] Create exception handling for GET requests
+- [ ] Test player data serialization
+- [ ] Test match data serialization
 
-### Done
+## Done
 
+- [x] Create GET request for match data
 - [x] Create GET request for player data
 - [x] Create a design doc
 - [x] Add bot to a discord server for testing
@@ -72,9 +72,9 @@ If i have other components i can use docker on my server to spin those up fast.
 - [x] Create Dev Diary
 - [x] Create a Trello Board
 
-### Get Help
+## Get Help
 
-- [ ] nothing yet
+- [ ] Find Deserialization patterns for POJOs
 
 ## Dev Diary
 ### Update 7/15/2024
