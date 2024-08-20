@@ -24,7 +24,7 @@ public class PlayerData implements ResponseData {
   private ValorantAsset agent;
   private Stats stats;
   private AbilityCasts ability_casts;
-  private int account_Level;
+    private int account_level;
   private OverallEconomy economy;
 
   public PlayerData(
@@ -39,7 +39,7 @@ public class PlayerData implements ResponseData {
       ValorantAsset agent,
       Stats stats,
       AbilityCasts ability_casts,
-      int accountLevel,
+      int account_level,
       OverallEconomy economy) {
     this.puuid = puuid;
     this.name = name;
@@ -52,7 +52,7 @@ public class PlayerData implements ResponseData {
     this.agent = agent;
     this.stats = stats;
     this.ability_casts = ability_casts;
-    this.account_Level = accountLevel;
+      this.account_level = account_level;
     this.economy = economy;
   }
 

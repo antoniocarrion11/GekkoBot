@@ -9,7 +9,7 @@ Building a org.bot flavored as Gekko; The org.bot can get information from Val s
 ### Desired features and requirements: 
 I want users to be able to:
 1. find recent match stats
-2. Copile a collection of lifetime stats
+2. Compile a collection of lifetime stats
 3. Use collection to find overall stats (headshot %, k/d/a, best maps, % up or down)
 4. Display rank
 
@@ -22,8 +22,9 @@ Within this database will exist previously computed and compiled values so there
 The org.bot will only update these values with recent stats when update is called. (This may need to be refined)
 
 ### Tech stack (wip)
-Java, maven, javascript maybe? 
-Research: Spring boot, Mysql, dynamoDb, aws server.
+
+Java, maven, Spring boot, lombok
+Research: Mysql, dynamoDb, aws server.
 If i have other components i can use docker on my server to spin those up fast.
 
 ### Libraries and apis so far
@@ -142,3 +143,20 @@ This is sick.
 
 Created a trello board and an easy way to convert it to markdown, hell yeah
 Hoping this helps with not getting overwhelmed
+
+Creating the getrequest for match ended up working differently than i thought. I could not in fact deserialize into an
+abstract class.
+Honestly not sure why i thought I could. The whole idea of an abstract class was to handle error handling, but I ran
+into
+a different issue **again**. The response classes extending the abstract classes don't line up.
+MatchResponse gets a list of data. While player response gets a single object.
+This is frustrating on a couple levels. I want to be able to catch the exception of an incorrectly deserialized object
+but
+still get the error object. I thought if i made the error and normal responses extend the same abstract i could get away
+with this but nope.
+This is also frustrating because I really wanted this code to scale well and make it easy to implement new responses to
+the api.
+Gonna update the trello board and see if i can get some help i guess.
+Good news is the request I made to getMatches actually worked after banging my head. Gotta double check your URL
+endpoints Tony.
+Also write some more comments dude. That way when we come back we're not totally befuddled by this libraries. 

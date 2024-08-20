@@ -1,9 +1,11 @@
 package org.bot.riot.model.player;
 
+import lombok.Setter;
 import org.bot.riot.model.AbstractResponse;
 
 import java.util.Collections;
 
+@Setter
 public class PlayerResponse extends AbstractResponse {
 
     private PlayerData data;
@@ -15,9 +17,5 @@ public class PlayerResponse extends AbstractResponse {
 
     public PlayerData getResponseData() {
         return data;
-    }
-
-    public void setResponseData(PlayerData data) {
-        this.data = data;
     }
 }
