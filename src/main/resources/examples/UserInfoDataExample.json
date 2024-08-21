@@ -1,0 +1,17 @@
+{
+  // Request URL https://api.henrikdev.xyz/valorant/v2/account/MoraJaybird/CHILL
+  "status": 200,
+  "data": {
+    "puuid": "5e24d8ad-3310-5673-b51f-940950a7069c",
+    "region": "na",
+    "account_level": 206,
+    "name": "MoraJaybird",
+    "tag": "CHILL",
+    "card": "2f34ab32-4479-0526-686d-e6a4a7b4105d",
+    "title": "9f2bbbe7-4b73-3ad0-193c-c7a0ee5ff6a8",
+    "platforms": [
+      "PC"
+    ],
+    "updated_at": "2024-07-19T18:55:54.602Z"
+  }
+}

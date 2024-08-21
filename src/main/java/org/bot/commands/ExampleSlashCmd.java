@@ -12,7 +12,7 @@ public class ExampleSlashCmd extends SlashExecutor {
 
     @Override
     public String getDescription() {
-        return "introduces gekko org.bot";
+        return "introduces gekko bot";
     }
 
     @Override
