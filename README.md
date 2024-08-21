@@ -3,17 +3,61 @@
 *~Working Design Doc for Gekko Bot*
 *Requirements, implementation ideas, problems to solve, dev diary etc...*
 
-### Quick summary
+## Quick summary
 Building a org.bot flavored as Gekko; The org.bot can get information from Val servers about players, stats etc.
 
-### Desired features and requirements: 
+## Desired features and requirements:
+
 I want users to be able to:
 1. find recent match stats
-2. Compile a collection of lifetime stats
+2. Compile a collection of stats for users
 3. Use collection to find overall stats (headshot %, k/d/a, best maps, % up or down)
-4. Display rank
+4. Display current rank
 
-### Ideas for implementation
+## Goals and Milestones
+
+- [x] Start the freaking project to begin with
+- [x] write a design doc
+- [x] Register a discord bot
+- [x] Create your first slash command
+- [x] Find a way to get data from valorant
+- [x] Start a dev diary
+- [x] Get an Api key
+- [ ] Use diagrams to identify data and components of the project
+- [ ] Properly accept and return data to the user
+- [ ] Get percentages and stats from the compiled data
+- [ ] Create a database
+- [ ] Create database entities and methods
+- [ ] Implement all slash commands
+- [ ] Create a noSql database
+- [ ] use noSql database to cache recent calls
+- [ ] Appropriately decide when to use the database or the api
+- [ ] save riot ids to discord names
+- [ ] setup docker for use
+- [ ] setup docker containers for all of your components
+- [ ] create a server for GekkoBot
+- [ ] run docker-compose within server and successfully start containers for gekkobot
+- [ ] find a way to safely store api key in server
+- [ ] Come up with a bunch of cool phrases for gekkobot to say
+- [ ] Dynamically choose phrases from bucket of phrases
+
+## Diagrams
+
+### Representation of User Info json response
+
+it's a start i guess
+
+![image info](./readmeImages/userInfo.png)
+
+### Representation of Match Data json response
+
+Incomplete rn
+
+![image info](./readmeImages/MatchData.png)
+
+Hope I can find a better way to get diagrams into this file
+
+## Ideas for implementation
 
 **Slash Commands** on the discord org.bot will call the org.bot to retrieve info.
 The org.bot will compute the data that it needs to either with information it has received from the api but it will check its local cache and database first.
@@ -23,56 +67,18 @@ The org.bot will only update these values with recent stats when update is calle
 
 ### Tech stack (wip)
 
-Java, maven, Spring boot, lombok
+Java, maven, Spring boot, lombok, docker
 Research: Mysql, dynamoDb, aws server.
 If i have other components i can use docker on my server to spin those up fast.
 
 ### Libraries and apis so far
 1. JDA java discord api, wrapper for a discord org.bot.
 2. Easy Commands library, supposed to make commands for discord org.bot easier to use. 
-3. Henrik dev api, supposed to be used to get info from val servers. *Written in js or something, might have to write some javascrip not sure*. 
+3. Henrik dev api, supposed to be used to get info from val servers.
 
 *Need to design system, components, find what components are needed*
 
-## Trello Board as of 8/19
-
-## To Do
-
-- [ ] Create Slash Command for Player Data
-- [ ] Create Slash Command for Match Data
-- [ ] Write Service logic that uses match data
-- [ ] Write Service logic that uses player data
-- [ ] mock up diagrams
-- [ ] Setup MySQL Database
-- [ ] Get RSO token for Riot's api
-- [ ] Write test REST calls to Riot's api
-- [ ] Create a server to host the discord bot
-- [ ] Get docker running
-- [ ] Put the service components within their own docker containers
-- [ ] Setup a noSql database
-- [ ] Use NoSql to reduce api calls, and queries to DB
-- [ ] see if automated tests are viable
-
-## In Progress
-
-- [ ] Create exception handling for GET requests
-- [ ] Test player data serialization
-- [ ] Test match data serialization
-
-## Done
-
-- [x] Create GET request for match data
-- [x] Create GET request for player data
-- [x] Create a design doc
-- [x] Add bot to a discord server for testing
-- [x] Create a github
-- [x] Write test REST calls to henrik's valorant api
-- [x] Build some example commands
-- [x] add spring boot dependencies to the project
-- [x] Create Dev Diary
-- [x] Create a Trello Board
-
-## Get Help
+### Get Help
 
 - [ ] Find Deserialization patterns for POJOs
 
@@ -208,5 +214,5 @@ I think I identified 6 things I need to address that will *hopefully* make work 
 
 All of this has given me a new appreciation for everything I learned in my software enterprise classes I'm not gonna
 lie.
-First things first, I'm gonna update my trello board and try to go after these... tasks? Ideas? Points, let's go after
-these points.
+First things first, I'm gonna update my trello board and try to go after these... tasks? Ideas?
+<br> Points, let's go after these points.

@@ -1,0 +1,98 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "metadata": {
+        "match_id": "",
+        "map": {
+          "id": "",
+          "name": ""
+        },
+        "game_version": "",
+        "game_length_in_ms": 710241,
+        "started_at": "",
+        "is_completed": true,
+        "queue": {
+          "id": "",
+          "name": "",
+          "mode_type": ""
+        },
+        "season": {
+          "id": "",
+          "short": ""
+        },
+        "platform": "",
+        "premier": null,
+        "region": "",
+        "cluster": ""
+      },
+      "players": [
+        {
+          "puuid": "",
+          "name": "",
+          "tag": "",
+          "team_id": "",
+          "platform": "",
+          "party_id": "",
+          "agent": {
+            "id": "",
+            "name": ""
+          },
+          "stats": {
+            "score": 1689,
+            "kills": 7,
+            "deaths": 3,
+            "assists": 0,
+            "headshots": 7,
+            "bodyshots": 13,
+            "legshots": 1,
+            "damage": {
+              "dealt": 893,
+              "received": 757
+            }
+          },
+          "ability_casts": {
+            "grenade": 0,
+            "ability1": 0,
+            "ability2": 5,
+            "ultimate": 1
+          },
+          "tier": {
+            "id": 0,
+            "name": ""
+          },
+          "customization": {
+            "card": "",
+            "title": "",
+            "preferred_level_border": null
+          },
+          "account_level": 7,
+          "session_playtime_in_ms": 120000,
+          "behavior": {
+            "afk_rounds": 0,
+            "friendly_fire": {
+              "incoming": 0,
+              "outgoing": 0
+            },
+            "rounds_in_spawn": 0
+          },
+          "economy": {
+            "spent": {
+              "overall": 10400,
+              "average": 1733.3334
+            },
+            "loadout_value": {
+              "overall": 12800,
+              "average": 2133.3333
+            }
+          }
+        }
+      ],
+      "observers": [],
+      "coaches": [],
+      "teams": [],
+      "rounds": [],
+      "kills": []
+    }
+  ]
+}
