@@ -34,7 +34,7 @@ If i have other components i can use docker on my server to spin those up fast.
 
 *Need to design system, components, find what components are needed*
 
-## CURRENT TRELLO BOARD
+## Trello Board as of 8/19
 
 ## To Do
 
@@ -160,3 +160,53 @@ Gonna update the trello board and see if i can get some help i guess.
 Good news is the request I made to getMatches actually worked after banging my head. Gotta double check your URL
 endpoints Tony.
 Also write some more comments dude. That way when we come back we're not totally befuddled by this libraries. 
+
+### Update 8/20
+
+Okie dokie.
+I had a few revelations about managing this project and my pain points.
+I think I identified 6 things I need to address that will *hopefully* make work on this project going forward easier.
+
+1. My workflow
+   <br>This branch ended up doing a lot more work than just making a controller that works with Henrik's api.
+   <br>Or rather, there was a lot more to do before I started making api requests. Like making slash commands, and
+   building serializable objects.
+   <br>I think this means I need to really sit and think about what needs to be done before what.
+   <br>And for what it's worth, what needs to be prioritized first.
+   <br>I went through the effort of writing down a design doc, let's use it.
+2. My design
+   <br>Speaking of design. I didn't make a single goddamn diagram.
+   <br>No wonder I keep running into issues. I keep losing the plot.
+   <br>Dedicate real time to making some **UML, Sequence** and **Entity Relationship** diagrams.
+3. My libraries
+   <br> My problem hasn't been springboot admittedly.
+   <br>The problem is I was stubborn on continuing to use it even after I realized I didn't need it.
+   <br>I thought for sure I was going to have to create a REST api myself. I'm grateful I don't, but I don't need
+   springboot.
+   <br>Going forward, I need to make sure I'm using the documentation provided, using dependencies I understand, and I'm
+   positive I need.
+4. My source code control
+   <br>If I'm going to be using GitHub I should focus my branches a little more.
+   <br>In reference to 1. I should be using each branch as a feature, or fix. Smaller in scope, easier to manage.
+   <br>I had a creeping thought that, since I'm the only developer maybe branches don't really make sense. Workflow is
+   developer agnostic though.
+   <br>If my branches are smaller in scope, I can work on feature A and switch to feature B if I decide that needs to be
+   worked on first.
+   <br>or if I'm just annoyed because feature A is a bitch and a half.
+5. My patterns
+   <br>One of the personal reasons I chose Java to create this bot is familiarity. I've been using Java for what feels
+   like my whole life now.
+   <br>But I keep failing on using patterns that take advantage of the language and are supposed to answer my
+   implementation questions.
+   <br>Bust out Java essentials and when I need an answer or a refactor I'll use it as a resource.
+6. My users
+   <br>I talked with Zeus for the first time about this project and I realized I didn't identify my requirements well.
+   <br>The feature _he_ was most excited for was finding the headshot percentage of his last match.
+   <br>That doesn't change the issues of today **but** it does change the priority of features I planned on
+   implementing.
+   <br>Gotta talk with my users more to better understand what they want delivered.
+
+All of this has given me a new appreciation for everything I learned in my software enterprise classes I'm not gonna
+lie.
+First things first, I'm gonna update my trello board and try to go after these... tasks? Ideas? Points, let's go after
+these points.
