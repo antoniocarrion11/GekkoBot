@@ -6,10 +6,11 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.bot.riot.api.ValorantController;
-import org.bot.riot.model.AbstractResponse;
 import org.bot.riot.model.player.PlayerData;
 import org.bot.riot.model.player.PlayerResponse;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -55,7 +56,8 @@ public class UserInfoCmd extends SlashExecutor {
         String tag = commandOptions.get(1).getAsString();
 
         String responseString = getResponseString(name, tag);
-
+        String responseStringFromEntity = getResponseStringFromEntity(name, tag);
+        responseString += " and here's the guy from entity \n" + responseStringFromEntity;
         event.getHook().sendMessage(responseString).queue();
     }
 
@@ -66,8 +68,7 @@ public class UserInfoCmd extends SlashExecutor {
         // TODO: Wrap this call in a try catch block
         //  Catch the exception and cast the abstract response into an error
         //  then return the response string from the error's data
-        AbstractResponse response = controller.getUser(name, tag);
-        PlayerResponse playerResponse = (PlayerResponse) response;
+        PlayerResponse playerResponse = controller.getUser(name, tag);
         PlayerData playerData = playerResponse.getResponseData();
         responseString =
                 "Ay dawg! Here's the guy you were looking for: \n"
@@ -82,6 +83,35 @@ public class UserInfoCmd extends SlashExecutor {
                         + "Level: "
                         + playerData.getAccount_level();
 
+        return responseString;
+    }
+
+    private static @NotNull String getResponseStringFromEntity(String name, String tag) {
+        String responseString;
+        ValorantController controller = new ValorantController();
+
+        // TODO: Wrap this call in a try catch block
+        //  Catch the exception and cast the abstract response into an error
+        //  then return the response string from the error's data
+        ResponseEntity<PlayerResponse> response = controller.getUserEntity(name, tag);
+        if (response.getStatusCode() == HttpStatus.OK) {
+            PlayerData playerData = response.getBody().getResponseData();
+            responseString =
+                    "Ay dawg! Here's the guy you were looking for: \n"
+                            + "Userid: "
+                            + playerData.getPuuid()
+                            + "\n"
+                            + "Name and Tag: "
+                            + playerData.getName()
+                            + "#"
+                            + playerData.getTag()
+                            + "\n"
+                            + "Level: "
+                            + playerData.getAccount_level();
+        } else {
+            responseString =
+                    "Yo! I'm sorry I tried... : " + response.getStatusCode();
+        }
         return responseString;
     }
 }

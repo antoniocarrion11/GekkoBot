@@ -1,22 +1,18 @@
 package org.bot.riot.model.error;
 
-import org.bot.riot.model.AbstractResponse;
-import org.bot.riot.model.ResponseData;
+import lombok.Getter;
+import lombok.Setter;
+import org.bot.riot.model.ApiResponse;
 
 import java.util.List;
 
-public class ErrorResponse extends AbstractResponse {
+@Getter
+@Setter
+public class ErrorResponse extends ApiResponse {
+    protected List<ErrorResponseData> errors;
 
     public ErrorResponse(int status, List<ErrorResponseData> errors) {
-        super(status, errors);
-    }
-
-    @Override
-    public ResponseData getResponseData() {
-        ErrorResponseData error = new ErrorResponseData();
-        if (!errors.isEmpty()) {
-            error = errors.get(0);
-        }
-        return error;
+        super(status);
+        this.errors = errors;
     }
 }

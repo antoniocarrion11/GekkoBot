@@ -25,6 +25,7 @@ I want users to be able to:
 - [x] Get an Api key
 - [ ] Use diagrams to identify data and components of the project
 - [ ] Properly accept and return data to the user
+- [ ] Handle error responses from the api
 - [ ] Get percentages and stats from the compiled data
 - [ ] Create a database
 - [ ] Create database entities and methods

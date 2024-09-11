@@ -1,18 +1,17 @@
 package org.bot.riot.model.match;
 
 import lombok.Setter;
-import org.bot.riot.model.AbstractResponse;
+import org.bot.riot.model.ApiResponse;
 
-import java.util.Collections;
 import java.util.List;
 
 @Setter
-public class MatchResponse extends AbstractResponse {
+public class MatchResponse extends ApiResponse {
 
     private List<MatchData> data;
 
     public MatchResponse(Integer status, List<MatchData> data) {
-    super(status, Collections.emptyList());
+        super(status);
     this.status = status;
     this.data = data;
   }

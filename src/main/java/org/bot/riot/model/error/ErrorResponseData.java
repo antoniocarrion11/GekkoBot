@@ -12,9 +12,10 @@ public class ErrorResponseData implements ResponseData {
   private Integer code;
   private String details;
 
-  ErrorResponseData() {}
+    public ErrorResponseData() {
+    }
 
-  ErrorResponseData(String message, Integer code, String details) {
+    public ErrorResponseData(String message, Integer code, String details) {
     this.message = message;
     this.code = code;
     this.details = details;

@@ -1,17 +1,15 @@
 package org.bot.riot.model.player;
 
 import lombok.Setter;
-import org.bot.riot.model.AbstractResponse;
-
-import java.util.Collections;
+import org.bot.riot.model.ApiResponse;
 
 @Setter
-public class PlayerResponse extends AbstractResponse {
+public class PlayerResponse extends ApiResponse {
 
     private PlayerData data;
 
     public PlayerResponse(int status, PlayerData data) {
-        super(status, Collections.emptyList());
+        super(status);
         this.data = data;
     }
 

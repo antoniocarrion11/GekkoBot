@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.bot.riot.api.ValorantController;
-import org.bot.riot.model.AbstractResponse;
+import org.bot.riot.model.ApiResponse;
 import org.bot.riot.model.match.MatchData;
 import org.bot.riot.model.match.MatchResponse;
 import org.jetbrains.annotations.NotNull;
@@ -73,7 +73,7 @@ public class LastMatchCmd extends SlashExecutor {
         // TODO: Wrap this call in a try catch block
         //  Catch the exception and cast the abstract response into an error
         //  then return the response string from the error's data
-        AbstractResponse response;
+        ApiResponse response;
         response = controller.getLastMatch(name, tag, mode);
 
         MatchResponse matchResponse = (MatchResponse) response;
