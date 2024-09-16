@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.bot.riot.model.ResponseData;
 import org.bot.riot.model.match.AbilityCasts;
 import org.bot.riot.model.match.OverallEconomy;
 import org.bot.riot.model.match.Stats;
@@ -16,7 +15,8 @@ import org.bot.riot.model.match.ValorantAsset;
 @Setter
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PlayerData implements ResponseData {
+public class PlayerData {
+
     @JsonProperty("puuid")
   private String puuid;
 
@@ -80,10 +80,5 @@ public class PlayerData implements ResponseData {
     this.ability_casts = ability_casts;
       this.account_level = account_level;
     this.economy = economy;
-  }
-
-  @Override
-  public String getResponseType() {
-    return "player";
   }
 }

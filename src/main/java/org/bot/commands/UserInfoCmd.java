@@ -55,47 +55,22 @@ public class UserInfoCmd extends SlashExecutor {
         String name = commandOptions.get(0).getAsString();
         String tag = commandOptions.get(1).getAsString();
 
-        String responseString = getResponseString(name, tag);
-        String responseStringFromEntity = getResponseStringFromEntity(name, tag);
-        responseString += " and here's the guy from entity \n" + responseStringFromEntity;
+        //        String responseString = getResponseString(name, tag);
+        String responseString = getResponseStringFromEntity(name, tag);
+        //        responseString += " and here's the guy from entity \n" + responseStringFromEntity;
         event.getHook().sendMessage(responseString).queue();
-    }
-
-    private static @NotNull String getResponseString(String name, String tag) {
-        String responseString;
-        ValorantController controller = new ValorantController();
-
-        // TODO: Wrap this call in a try catch block
-        //  Catch the exception and cast the abstract response into an error
-        //  then return the response string from the error's data
-        PlayerResponse playerResponse = controller.getUser(name, tag);
-        PlayerData playerData = playerResponse.getResponseData();
-        responseString =
-                "Ay dawg! Here's the guy you were looking for: \n"
-                        + "Userid: "
-                        + playerData.getPuuid()
-                        + "\n"
-                        + "Name and Tag: "
-                        + playerData.getName()
-                        + "#"
-                        + playerData.getTag()
-                        + "\n"
-                        + "Level: "
-                        + playerData.getAccount_level();
-
-        return responseString;
     }
 
     private static @NotNull String getResponseStringFromEntity(String name, String tag) {
         String responseString;
         ValorantController controller = new ValorantController();
 
-        // TODO: Wrap this call in a try catch block
-        //  Catch the exception and cast the abstract response into an error
-        //  then return the response string from the error's data
         ResponseEntity<PlayerResponse> response = controller.getUserEntity(name, tag);
-        if (response.getStatusCode() == HttpStatus.OK) {
-            PlayerData playerData = response.getBody().getResponseData();
+        if (response.getStatusCode() == HttpStatus.OK
+                && response.getBody() != null
+                && response.getBody().getData() != null) {
+            @SuppressWarnings("DataFlowIssue")
+            PlayerData playerData = response.getBody().getData();
             responseString =
                     "Ay dawg! Here's the guy you were looking for: \n"
                             + "Userid: "
@@ -109,8 +84,7 @@ public class UserInfoCmd extends SlashExecutor {
                             + "Level: "
                             + playerData.getAccount_level();
         } else {
-            responseString =
-                    "Yo! I'm sorry I tried... : " + response.getStatusCode();
+            responseString = "Yo! I'm sorry I tried... : " + response.getStatusCode();
         }
         return responseString;
     }

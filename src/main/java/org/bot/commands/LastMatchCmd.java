@@ -6,10 +6,10 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.bot.riot.api.ValorantController;
-import org.bot.riot.model.ApiResponse;
 import org.bot.riot.model.match.MatchData;
 import org.bot.riot.model.match.MatchResponse;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -29,10 +29,11 @@ public class LastMatchCmd extends SlashExecutor {
 
         options.add(new OptionData(OptionType.STRING, "playername", "The valorant name of the user you're finding", true));
         options.add(new OptionData(OptionType.STRING, "tag", "The valorant tag of the user you're finding", true));
-        options.add(new OptionData(OptionType.STRING, "mode", "an option to filter the selection by mode", true)
-                .addChoice("Swiftplay", "swiftplay")
-                .addChoice("Competitive", "competitive")
-                .addChoice("Unrated", "unrated"));
+        options.add(
+                new OptionData(OptionType.STRING, "mode", "an option to filter the selection by mode", true)
+                        .addChoice("Swiftplay", "swiftplay")
+                        .addChoice("Competitive", "competitive")
+                        .addChoice("Unrated", "unrated"));
 
         return options;
     }
@@ -66,20 +67,25 @@ public class LastMatchCmd extends SlashExecutor {
         event.getHook().sendMessage(responseString).queue();
     }
 
-    private static @NotNull String getResponseString(String name, String tag, String mode) {
-        String responseString;
+    private static String getResponseString(String name, String tag, String mode) {
+        String responseString = "Ay dawg! I can't find any matches! ";
+
         ValorantController controller = new ValorantController();
 
-        // TODO: Wrap this call in a try catch block
-        //  Catch the exception and cast the abstract response into an error
-        //  then return the response string from the error's data
-        ApiResponse response;
+        ResponseEntity<MatchResponse> response;
         response = controller.getLastMatch(name, tag, mode);
 
-        MatchResponse matchResponse = (MatchResponse) response;
-        List<MatchData> matchData = matchResponse.getMatchData();
-        responseString = "Ay dawg! Here's the guy you were looking for: " + matchData.get(0).getResponseType();
+        if (response.getStatusCode() == HttpStatus.OK
+                && response.getBody() != null
+                && response.getBody().getData() != null
+                && !response.getBody().getData().isEmpty()) {
 
+            @SuppressWarnings("DataFlowIssue")
+            MatchData matchData = response.getBody().getMatchData();
+            responseString = "Ay dawg! Here's the match you were looking for: " + matchData.getMetadata().getMatch_id();
+        } else {
+            responseString += response.getStatusCode();
+        }
         return responseString;
     }
 }
